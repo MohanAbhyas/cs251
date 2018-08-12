@@ -9,11 +9,16 @@ def fill_choice():
     f.close()
 
     with open('new_int.p','ab') as f:
+        arbit=[]
+        for i in range(1,5000):
+            arbit.append(i)
+        random.shuffle(arbit)
+        arbit=arbit[:100]
         for i in range(0,100):
             if a[3]=='Z':
                 a=a[:2]+chr(ord(a[2])+1)+'@'
             a=a[:3]+chr(ord(a[3])+1)
-            rand=round(4999*random.random())+1
+            rand=arbit[i]
             st=str(rand)+' '+a
             pickle.dump(st,f)
 
@@ -52,9 +57,12 @@ def ask_choice():
 
             if num[i]+num[j]==inp:
                 print(name[j]+' '+str(num[j])+' '+name[i]+' '+str(num[i]))
-                j=l-1
-                i=l-1
                 flag_real=1
+
+            if flag_real == 1:
+                break
+        if flag_real == 1:
+            break
 
     if flag_real==0:
         if flag_backup==1:
