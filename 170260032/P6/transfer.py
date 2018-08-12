@@ -36,9 +36,10 @@ with open("transfer.txt", 'r') as rfile:
     i = rfile.readline()
     while i:
         if i.split(" ")[0] != 'Team_name':
-            team,jnbr = (i.strip('\n')).split(" ")
+            team,jnbr = i.split()
+            #print(team +' '+str(jnbr))
             if team not in tns:
-                print("Try another transfer(Wrong team name)")
+                pass #print("Try another transfer(Wrong team name)")
             else:
                 tm1='Z'
                 tm2=team
@@ -52,11 +53,11 @@ with open("transfer.txt", 'r') as rfile:
                             break
                     #print("tm1", tm1)
                 if tm1 not in tns:
-                    print("Try another transfer(Wrong player name)")
+                    pass #print("Try another transfer(Wrong player name)")
                 elif tm1 == tm2:
-                    print("Player is in the same team")
+                    pass #print("Player is in the same team")
                 elif int(database['Teams'][tm1][jnbr]) > 7:
-                    print("Try another transfer(Players rating greater than 7 cannot be transfered)")
+                    pass #print("Try another transfer(Players rating greater than 7 cannot be transfered)")
                 else:
                     minl,minp = 11,''
                     for j in database['Teams'][tm2].keys():
@@ -64,13 +65,13 @@ with open("transfer.txt", 'r') as rfile:
                             minp = j
                             minl = database['Teams'][tm2][j]
                     if int(minl) > 7:
-                        print("Try another transfer(Team chosen cannot return player)")
+                        pass #print("Try another transfer(Team chosen cannot return player)")
                     else:
                         database['Teams'][tm1][minp] = minl
                         database['Teams'][tm2][jnbr] = database['Teams'][tm1][jnbr]
                         del database['Teams'][tm1][jnbr]
                         del database['Teams'][tm2][minp]
-                        print("Tranfer Complete")
+                        #print("Tranfer Complete")
                         count = count + 1
         i = rfile.readline()
     print("Players transfered ", count)
