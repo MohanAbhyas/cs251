@@ -11,7 +11,6 @@ try:
 		out=np.array(vec_to_ang(data))
 		np.savetxt(output_file,out,delimiter=",")
 	elif (data.ndim==1 and flag==0):
-		print("0")
 		out=ang_to_vec(data)
 		np.savetxt(output_file,out,delimiter=",")
 	else:
