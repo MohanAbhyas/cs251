@@ -15,5 +15,6 @@ try:
 		np.savetxt(output_file,out,delimiter=",")
 	else:
 		raise ValueError
+		
 except Exception as e:
 	exit(1)
