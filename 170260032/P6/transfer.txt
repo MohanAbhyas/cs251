@@ -1,0 +1,7 @@
+Team_name Jersey_number
+A 500
+B 599
+C 598
+F 597
+D 1741
+X 1
