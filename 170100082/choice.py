@@ -26,14 +26,19 @@ def throws():
     raise ValueError()
 def ask_choice():
     file=sys.argv[1]
+    try:
+        open(file)
+    except:
+        print("file not found")
+        exit(1)
     inp=int(input('Enter Number: '))
-    if inp<5000 or inp>7000:
+    while inp<5000 or inp>7000:
         try:
             throws()
             return 0
         except Exception:
             sys.stderr.write('ERROR: Input range is 5000-7000\n')
-            return 1
+            inp=int(input('Enter Number: '))
     num=[]
     name=[]
     l=100
@@ -71,8 +76,11 @@ def ask_choice():
             print("Not possible")
             
 def main():
-    fill_choice()
-    ask_choice()
+   # print(sys.argv)
+    if len(sys.argv)==2:
+        ask_choice()
+    else:
+        fill_choice()
 
 if __name__ == "__main__":
     main()
