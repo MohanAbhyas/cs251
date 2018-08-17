@@ -24,9 +24,11 @@ def prime2(lower,upper):
 
 
 parser=argparse.ArgumentParser()
-parser.add_argument("--checkprime",help="takes integer as value and prints “Yes” or “No” depending on whether the value is prime or not respectively",required=True)
+parser.add_argument("--checkprime",help="takes integer as value and prints “Yes” or “No” depending on whether the value is prime or not respectively",required=False)
 parser.add_argument("--range",help="takes two more integer values named “​lower_bound​” and “​upper_bound​” and prints total number of primes between lower_bound ​and​ upper_bound ​(both inclusive)",required=False)
+print(parser)
 args=parser.parse_args()
+print(args)
 try:
     if args.checkprime:
         number=int(args.checkprime)
