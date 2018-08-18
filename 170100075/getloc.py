@@ -14,14 +14,16 @@ def pass_time():
 	param={}
 	request={}
 	print("Enter Details to know when ISS will pass over a location:")
-	request["latitude"]=float(input("Latitude :"))
-	request["longitude"]=float(input("Longitude :"))
-	param["request"]=request
-
-	#wbpage1=requests.post(url,request)
-	print(request)
+	request["lat"]=float(input("Latitude :"))
+	request["lon"]=float(input("Longitude :"))
 	wbpage=requests.get(url2,params=request)
-	print(wbpage.text)
+	obj2=json.loads(wbpage.text)
+	risetime=datetime.datetime.utcfromtimestamp(obj2["response"][0]["risetime"])
+	duration=datetime.datetime.utcfromtimestamp(obj2["response"][0]["duration"])
+	print("Date :",risetime.strftime('%d/%m/%Y'))
+	print("Time :",risetime.strftime('%H:%M'))
+	print("For :",duration.strftime('%M minutes and %S seconds'))
+
 def people_info():
 	url3="http://api.open-notify.org/astros.json"
 	wbpage3=requests.get(url3)
