@@ -19,7 +19,7 @@ for category,link in data.items():
 	data[category]=len(content3.findChildren('tr',recursive=False))
 
 with open('count.csv', 'w') as wfile:
-	writer = csv.writer(wfile,delimiter=',')#,quotechar="'")
+	writer = csv.writer(wfile,delimiter='	')#,quotechar="'") 
 	writer.writerow(['Category Name','No. of students'])
 	for k,v in data.items():
 		writer.writerow([k,v])
