@@ -20,8 +20,8 @@ def returnCount() :
 
 
 with open('count.csv','r') as f:
-	header=f.readline().replace('\n','').split(',')
-	reader=csv.reader(f,delimiter=',')
+	header=f.readline().replace('\n','').split('	')
+	reader=csv.reader(f,delimiter='	')
 	category=[]
 	stud=[]
 	for row in reader:
@@ -30,6 +30,7 @@ with open('count.csv','r') as f:
 
 conn = sqlite3.connect('cse_students.sqlite')
 c=conn.cursor()
+c.execute("DROP TABLE IF EXISTS cse_students")  
 c.execute("create TABLE cse_students {}".format(tuple(header)))
 
 
