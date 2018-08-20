@@ -2,6 +2,8 @@ SHELL := /bin/bash
 var := $(shell ls -t -1 ./*.o | tail -1)
 
 all: main
+.PHONY: skiprebuild
+.PHONY: skiprebuildh
 
 main: main.o depend.o
 	g++ main.o depend.o -o main
