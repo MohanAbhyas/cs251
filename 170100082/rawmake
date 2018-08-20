@@ -15,7 +15,7 @@ myengine.o: myengine/myengine.hpp myengine/myengine.cpp
 	g++ -c -Wall -fpic myengine/myengine.cpp -o myengine.o
 
 libMyEngineStatic.a: myengine.o
-	g++ -shared -o libMyEngineStatic.a myengine.o
+	ar rcs libMyEngineStatic.a myengine.o
 
 libMyEngineDynamic.so: myengine.o
 	g++ -shared -o libMyEngineDynamic.so myengine.o 
