@@ -1,0 +1,183 @@
+\documentclass[14pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[left=3cm,top=9cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{hhline}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{capt-of}
+\usepackage{tabu}
+
+
+\title{\huge{\textbf{Software Systems Lab 7:\\TeX Lab}}}
+\author{\Large{Team 011 bytes}}
+\date{\Large{1 September, 2018}}
+\thispagestyle{empty}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\clearpage
+\pagenumbering{arabic}
+\newgeometry{left=2.7cm,top=4cm,right=2.7cm}
+\begin{figure}
+\begin{center}
+\tikzstyle{startstop} = [ellipse, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{tikzpicture}[node distance=1.5cm]
+\node (start) [startstop] {Start Life};
+\node (pro1) [process, below of=start] {Pray};
+\node (dec1) [decision, below of=pro1, yshift=-1cm, align=center] {Did it \\work?};
+\node (pro2) [process, below of=dec1, yshift=-1cm, align=center] {Praise\\ the Lord};
+\node (pro2b) [process, right of=pro2, xshift=3cm, align=center] {God works\\ in myste-\\rious ways};
+\node (stop) [startstop, below of=pro2] {Die};
+\draw [arrow] (start) -- (pro1);
+\draw [arrow] (pro1) -- (dec1);
+\draw [arrow] (dec1) -- (pro2);
+\draw [arrow] (pro2) -- (stop);
+\draw [arrow] (dec1) -| (pro2b);
+\draw [arrow] (pro2b) |- (stop);
+\end{tikzpicture}
+\caption{Flowchart of a theist life}
+\end{center}
+\end{figure}
+
+Figure 1 above refers to a funny conundrum theists are believed to be
+living in by the atheists. This is just a joke I picked up from some forum,
+not taking sides, not even a bit. This is how scared social media has made
+us, We can not pick sides. Moving on . . . . You need to know how to cite
+papers in \LaTeX. For e.g. you are talking about research on Indowordnet
+[1], in that case such a citation must be used near a name. In case you
+need to quote the authors of a paper in a statement, instead of citing them
+against a topic or word or a line, you need to use a different kind of citation
+methodology.
+
+
+\newgeometry{left=2cm,top=4cm,right=2.2cm}
+\begin{table}[h!]
+  \begin{center}
+    \caption{Table depicting the use of both multirow and multicolumn}
+    \label{tab:table1}
+    \begin{tabular}{ccc|c|c|c|c|c|c|c|c|c|}\cline{4-12} 
+      \multicolumn{3}{c}{\multirow{2}{*}{}} &
+      \multicolumn{5}{|c|}{\textbf{Basic properties}} & \multicolumn{4}{|c|}{\textbf{Readability}}\\\cline{4-12}
+      \multicolumn{3}{c|}{} & \textbf{WC} & \textbf{SC} & \textbf{C-W} & \textbf{S-W} & \textbf{W-S} & \textbf{FK} & \textbf{GF} & \textbf{SMOG} & \textbf{LEX}\\
+      \hline
+      \multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{2cm}{\textit{Baseline}}}} & Mean & 0.84 & 0.41 & \textbf{0.56} & \textbf{0.46} & \textbf{0.55} & \textbf{0.60} & 0.56 & 0.57 & 0.63 \\\cline{3-12}
+       \multicolumn{2}{|c|}{} & SD & 0.07 & 0.08 & 0.06 & 0.07 & 0.05 & 0.05 & 0.06 & 0.07 & 0.05 \\
+      \hhline{============}
+      
+      \multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{2.5cm}{$ScaComp_h$}}} & Mean & 0.84 & 0.41 & \textbf{0.56} & \textbf{0.46} & \textbf{0.55} & \textbf{0.60} & 0.56 & 0.57 & 0.63 \\\cline{3-12}
+       \multicolumn{2}{|c|}{} & SD & 0.07 & 0.08 & 0.06 & 0.07 & 0.05 & 0.05 & 0.06 & 0.07 & 0.05 \\
+      \hhline{============}
+      
+      \multicolumn{2}{|c|}{\multirow{2}{*}{\parbox{2.5cm}{$ScaComp_l$}}} & Mean & 0.84 & 0.41 & \textbf{0.56} & \textbf{0.46} & \textbf{0.55} & \textbf{0.60} & 0.56 & 0.57 & 0.63 \\\cline{3-12}
+       \multicolumn{2}{|c|}{} & SD & 0.07 & 0.08 & 0.06 & 0.07 & 0.05 & 0.05 & 0.06 & 0.07 & 0.05 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+To combine rows a package must  be  imported with in your preamble, then
+you can use the\hspace{0.25cm} XXXXXXX  \hspace{0.3cm} command in your document,  I\hspace{0.3cm}  did\hspace{0.5cm}  it.  \hspace{0.3cm}The \hspace{0.25cm}
+table below includes  mathematical  notations, \hspace{0.20cm}which \hspace{0.5cm}you \hspace{0.5cm}can produce by
+embedding  the  experession in \hspace{0.25cm}\$ \$\hspace{0.25cm} delimiters. \hspace{0.2cm}For subscript, use underscore
+and for superscript, use carrot.
+\vskip 1cm
+{\setstretch{1.0}\Large{In table 1 above, we try to demonstrate all the features required to be demonstrated in a table. We use multiple newline, we use a package to enable the use of multiple rows, and multiple columns in the table. Additionally, We have also drawn lines from specific column to column. We also use box resizing with a width specifier for resizing the box within the limits of the document, and avoid any overflow.}}
+\vskip 1cm
+Now, we will import images side by side in the same document.
+\newgeometry{left=2.3cm,top=2cm,right=2.44cm}
+\begin{figure}[!tbp]
+  \centering
+  \begin{minipage}[b]{0.49\textwidth}
+    \includegraphics[width=8cm,height=12cm]{fig1.png}
+    \caption{First figure}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.49
+  \textwidth}
+    \includegraphics[width=8cm,height=12cm]{fig2.png}
+    \caption{Second figure}
+  \end{minipage}
+\end{figure}
+
+\vskip 4cm
+The images have been put in, and they are side by side in the same document
+on the same page. We have used the package floatrow and graphicx to
+import images on Page 3. The images are some random screenshots of my
+phone. I am adding an mathematical equation now just for the sake of it,
+because I think this is the only thing left to be demonstrated.
+
+\begin{align}
+  NLL &= -\sum_{i=1}^{N} log(P(s_i))  
+\end{align} 
+where $s_i$ is the length of the $i^{th}$ saccade.
+\vskip 2mm
+This text will refer to Equation 1 above. In case you would like to see an
+alternative method to align the images, for instance images as subfigures, let
+me try to do it.
+
+\newgeometry{left=2.5cm,top=4cm,right=2.5cm}
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=5cm,height=3cm]{fig3_a.jpg}
+  \caption{Caption 1}
+  \label{fig:sub1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=5cm,height=3cm]{fig3_b.jpg}
+  \caption{Caption 2}
+  \label{fig:sub2}
+\end{subfigure}
+\caption{Caption for this figure with two images}
+\label{fig:test}
+\end{figure}
+
+This is another alternative to posting images in a \LaTeX \hspace Document, although
+you would still want me to put them in a table, since ‘The Document’
+had them in a table. Let me try to do that.
+\vskip 1cm
+\begin{table}[ht]
+\caption{Table with images, finally}
+\centering
+\begin{tabu}to \textwidth {X[c]X[c]}
+  \includegraphics[width=65mm,]{fig5.png} &\includegraphics[width=65mm]{fig4.png} \\
+  \includegraphics[width=65mm]{fig4.png} &\includegraphics[width=65mm]{fig5.png} \\
+\end{tabu}
+\end{table}
+
+Now, that we have all the possible ways multiple images can be aligned in
+the table. We will conclude this document with the final section.
+
+\vskip 4cm
+\newgeometry{right=2cm}
+\noindent{\large{\textbf{Conclusion}}}
+\vskip 0.5cm
+\noindent {This document comprehensively demonstrated the capabilities of \LaTeX\, as a
+document typesetting / desktop publishing package. We have used various
+font size / family settings, we have used verbatim to display Latex code
+in a latex document, image settings, sections, subsections, references using
+labels, mathamatical equations, notations, use of \^{a}\u{A}\"{Y}dia\^{a}\u{A}\'{Z} for creating
+a diagram / flowchart etc. I hope this suffices the need of learning basic
+\LaTeX. I hope you also notice that the last section i.e. Conclusion on Page
+5 is unnumbered and displays the use of something.}
+
+\vskip 1cm
+\noindent{\large{\textbf{References}}}
+\vskip 0.5cm
+\noindent{[1] Pushpak Bhattacharyya. Indowordnet. In \textit{The WordNet in Indian Lan-\\
+\hspace*{0.7cm}guages},
+pages 1\^{a}\u{A}\c{S}18. Springer, 2017.}
+
+\end{document}
