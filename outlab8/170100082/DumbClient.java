@@ -17,7 +17,7 @@ public class DumbClient
         try
         {
             String host = "localhost";
-            int port = 25000;
+            int port = 8075;
             InetAddress address = InetAddress.getByName(host);
             socket = new Socket(address, port);
  
