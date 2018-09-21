@@ -16,7 +16,7 @@ public class EchoServer
     {
         try
         {
- 	    int port = 25000;
+ 	    int port = 8075;
             ServerSocket serverSocket = new ServerSocket(port);
 	    String server_quote="";
 	    for(int i=0;i<args.length-1;i++)
