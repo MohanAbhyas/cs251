@@ -75,6 +75,6 @@ public class PSum
     int arr[]=new int[(int)Math.pow(p,n)];
     for (int i = 0; i < arr.length; i++)
         arr[i] = sc.nextInt(); //arr[i]=i+1;    
-    Summation.parallelSum(arr,(int)Math.pow(p,n-1),2);
+    Summation.parallelSum(arr,(int)Math.pow(p,n-1),p);
   }
 }
