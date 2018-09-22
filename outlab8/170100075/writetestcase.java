@@ -15,9 +15,9 @@ public class writetestcase{
 
 		try{    
 		   FileWriter fw=new FileWriter("testcase"+f+".txt");
-		   fw.write(5+" "+8+"\n");
+		   fw.write(n+" "+p+"\n");
 		   //fw.newLine();
-		   for (int i=1 ;i<Math.pow(8,5)+1 ; ++i) {
+		   for (int i=1 ;i<Math.pow(p,n)+1 ; ++i) {
 			fw.write(i+" ");
 		}    
 		   fw.close();    
