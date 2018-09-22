@@ -1,40 +1,39 @@
-import java.util.*;
-
+import java.util.Scanner;
 class Summation extends Thread {
 
-    private int[] arr;
+    private long[] arr;
 
-    private int low, high, partial;
+    private int low, high;long partial;
 
-    public Summation(int[] arr, int low, int high)
+    public Summation(long[] arr, int low, int high)
     {
         this.arr = arr;
         this.low = low;
         this.high = Math.min(high, arr.length);
     }
 
-    public int getPartialSum()
-    {
-        return partial;
-    }
 
     public void run()
     {
-        partial = sum(arr, low, high);
+        sum(arr, low, high);
     }
-    public static int sum(int[] arr, int low, int high)
-    {
-        int total = 0;
 
-        for (int i = low; i < high; i++) {
-            total += arr[i];
-        }
-        return total;
-    }
-    public static void parallelSum(int[] arr, int threads, int p)
+    public static void sum(long[] arr, int low, int high)
     {
-        int size = arr.length/threads;
-        while(threads>0)
+        long sum=0;
+        for (int i = low; i < high; i++) {
+            sum+=arr[i];
+
+        }
+        //return sum;
+        arr[low/(high-low)]=sum;
+    }
+
+
+    public static void parallelSum(long[] arr,int threads,int size)
+    {
+        //System.out.println("paralleSum called");
+        while (threads>0)
         {
         Summation[] sums = new Summation[threads];
 
@@ -42,39 +41,54 @@ class Summation extends Thread {
             sums[i] = new Summation(arr, i * size, (i + 1) * size);
             sums[i].start();
         }
-        for (int i = 0; i < threads; i++)
-         try {
+
+        try {
             for (Summation sum : sums) {
                 sum.join();
             }
-        } 
-        catch (InterruptedException e) { }
-
-        int total = 0;
-        int big[]=new int[threads];
-        int k=0;
-        for (Summation sum : sums) {
-            big[k]=sum.getPartialSum();
-            ++k;
+        } catch (InterruptedException e) { }
+	threads/=size;
+        //long total = 0;
+        //Summation.parallelSum(arr,threads/size,size);
+        /*for (Summation sum : sums) {
+            total += sum.getPartialSum();
         }
-        arr=big;
-        threads/=p;
-        }
-      System.out.println(arr[0]);
+        return total;*/
     }
-
+System.out.println(arr[0]);
+}
 }
 
-public class PSum
-{
- public static void main(String[] args)
-  {
-    Scanner sc=new Scanner(System.in);
-    int n=sc.nextInt();
-    int p=sc.nextInt();/*int n=10;int p=2;*/
-    int arr[]=new int[(int)Math.pow(p,n)];
-    for (int i = 0; i < arr.length; i++)
-        arr[i] = sc.nextInt(); //arr[i]=i+1;    
-    Summation.parallelSum(arr,(int)Math.pow(p,n-1),p);
-  }
+
+    /*class mythread extends Thread{
+        private Thread t;
+        public void run(){
+            try{
+            }
+            catch(Exception e){
+            }
+        }
+    }*/
+
+public class PSum{
+
+    public static void main(String args[])
+    {
+        long[] A;
+
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int p=sc.nextInt();
+        int tot=(int)Math.pow(p,n);
+        A= new long[tot] ;
+        for (int i = 0; i < tot; i++) {
+            A[i]=sc.nextInt();
+        }
+        long[] B=A;
+        //System.out.println(Summation.parallelSum(B,(int)Math.pow(p,n-1),p));
+        Summation.parallelSum(B,(int)Math.pow(p,n-1),p);
+        //System.out.println(B[0]);
+
+        //System.out.println("Parallel: " + (System.currentTimeMillis() - start)); // Parallel: 25
+    }
 }
